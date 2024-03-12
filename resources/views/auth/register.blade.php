@@ -12,7 +12,7 @@
   <link
       href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
       rel="stylesheet">
-
+  
   <!-- Custom styles for this template-->
   <link href="{{ asset('sb-admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
 </head>
@@ -30,12 +30,23 @@
             </div>
             <form action="{{ route('register.save') }}" method="POST" class="user">
               @csrf
-              <div class="form-group">
-                <input name="name" type="text" class="form-control form-control-user @error('name')is-invalid @enderror"
-                       id="exampleInputName" placeholder="Nombre">
-                @error('name')
-                <span class="invalid-feedback">{{ $message }}</span>
-                @enderror
+              <div class="form-group row">
+                <div class="col-sm-6">
+                  <input name="first_name" type="text"
+                         class="form-control form-control-user @error('first_name')is-invalid @enderror"
+                         id="exampleInputFirstName" placeholder="Nombre">
+                  @error('first_name')
+                  <span class="invalid-feedback">{{ $message }}</span>
+                  @enderror
+                </div>
+                <div class="col-sm-6">
+                  <input name="last_name" type="text"
+                         class="form-control form-control-user @error('last_name')is-invalid @enderror"
+                         id="exampleInputLastName" placeholder="Apellido">
+                  @error('last_name')
+                  <span class="invalid-feedback">{{ $message }}</span>
+                  @enderror
+                </div>
               </div>
               <div class="form-group">
                 <input name="email" type="email"
@@ -62,6 +73,24 @@
                   <span class="invalid-feedback">{{ $message }}</span>
                   @enderror
                 </div>
+              </div>
+              <div class="form-group">
+                <input name="phone_number" type="number"
+                       class="form-control form-control-user @error('phone_number')is-invalid @enderror"
+                       id="exampleInputPhoneNumber"
+                       placeholder="Número de Teléfono">
+                @error('phone_number')
+                <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
+              </div>
+              <div class="form-group">
+                <input name="address" type="text"
+                       class="form-control form-control-user @error('address')is-invalid @enderror"
+                       id="exampleInputAddress"
+                       placeholder="Dirección del Usuário">
+                @error('address')
+                <span class="invalid-feedback">{{ $message }}</span>
+                @enderror
               </div>
               <button type="submit" class="btn btn-primary btn-user btn-block">Registrar Cuenta</button>
             </form>

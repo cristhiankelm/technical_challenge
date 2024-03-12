@@ -19,16 +19,21 @@ class AuthController extends Controller
     public function registerSave(Request $request)
     {
         Validator::make($request->all(), [
-            'name' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'email' => 'required|email',
-            'password' => 'required|confirmed'
+            'password' => 'required|confirmed',
+            'phone_number' => 'required|numeric',
+            'address' => 'required'
         ])->validate();
 
         User::create([
-            'name' => $request->name,
+            'first_name' => $request->first_name,
+            'last_name' => $request->last_name,
             'email' => $request->email,
             'password' => Hash::make($request->password),
-            'level' => 'Admin'
+            'phone_number' => $request->phone_number,
+            'address' => $request->address
         ]);
 
         return redirect()->route('login');
