@@ -1,66 +1,74 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# Descripción del Proyecto
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+El objetivo de este proyecto es desarrollar una aplicación web para el manejo de gastos e ingresos personales. La aplicación permitirá a los usuarios registrar sus gastos e ingresos, visualizar el estado actual de su cuenta y realizar operaciones CRUD sobre sus registros. Este proyecto se implementará utilizando el framework Laravel 10 y se integrará con SB Admin 2 para una interfaz de usuario amigable.
 
-## About Laravel
+## Requisitos y Características
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### Requisitos Técnicos
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- **Instalación y Configuración de Laravel 10:** Configurar un proyecto Laravel 10 con las dependencias necesarias.
+- **Repositorio Git:** Inicializar un repositorio Git para el manejo de versiones del proyecto.
+- **Instalación de SB Admin 2:** Integrar la plantilla de administración SB Admin 2 con Laravel para la interfaz de usuario.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### Características de la Aplicación
 
-## Learning Laravel
+- **Registro de Usuarios:** Los usuarios podrán registrarse proporcionando su nombre, apellido, email, teléfono y dirección.
+- **Ingreso de Gastos e Ingresos:** Los usuarios podrán registrar la fecha, concepto y monto de sus gastos e ingresos.
+- **Operaciones CRUD:** La aplicación ofrecerá funcionalidades CRUD (Crear, Leer, Actualizar, Eliminar) para manejar los registros de gastos e ingresos.
+- **Validación de Datos:** Se validarán los datos ingresados para asegurar que sean del tipo correcto y se mostrarán mensajes de error en caso de datos incorrectos.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Funcionalidades Adicionales (Extras)
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+- **Encriptación de Datos:** Considerar la encriptación de datos sensibles como el email y teléfono del usuario.
+- **Niveles de Acceso:** Implementar diferentes niveles de acceso para los usuarios.
+- **Filtrado de Registros:** Ofrecer opciones de filtrado para los registros de gastos e ingresos.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## Implementación Adicional
 
-## Laravel Sponsors
+- **Integración con DataTables:** Utilizar la librería DataTables para mejorar la visualización y manejo de los registros de gastos e ingresos.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## Lógica de Implementación
 
-### Premium Partners
+La lógica principal de la aplicación consistirá en la gestión de usuarios y sus registros de gastos e ingresos. Se utilizarán controladores de Laravel para manejar las operaciones CRUD y se implementarán validaciones para asegurar la integridad de los datos. La interfaz de usuario se diseñará con SB Admin 2 y se mejorará la experiencia de usuario con funcionalidades adicionales como encriptación de datos, niveles de acceso y filtrado de registros.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+## Requisitos
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+- PHP >= 8.1
+- Composer
+- Servidor MySQL o equivalente
 
-## Code of Conduct
+## Instalación
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+```bash
+1. Clonar el repositorio
 
-## Security Vulnerabilities
+    git clone https://github.com/cristhiankelm/technical_challenge
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+    cd technical_challenge
 
-## License
+2. Instalar las dependencias de Composer
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+    composer install
+
+3. Configurar el entorno
+
+    Copia el archivo .env.example a .env:
+
+    cp .env.example .env
+
+    Edita el archivo .env y configura las variables de entorno, especialmente las relacionadas con la conexión a la base de datos (DB_*).
+
+4. Generar la clave de la aplicación
+
+    php artisan key:generate
+
+5. Ejecutar las migraciones
+
+    php artisan migrate --seed
+
+6. Iniciar el servidor de desarrollo
+
+    php artisan serve
+
+Accede a la aplicación en http://localhost:8000.
