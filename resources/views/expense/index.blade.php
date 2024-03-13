@@ -27,14 +27,14 @@
           </div>
           <div class="card-body">
             <div class="table-responsive">
-              <table class="table table-bordered data-table" width="100%" cellspacing="0">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                 <tr>
-                  <th>ID</th>
-                  <th>Nombre</th>
+                  <th width="5%">ID</th>
+                  <th width="10%">Fecha</th>
                   <th>Concepto</th>
-                  <th>Monto</th>
-                  <th width="105px">Acción</th>
+                  <th width="20%">Monto</th>
+                  <th width="105px">Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -51,20 +51,26 @@
 
 @section('scripts')
   <script type="text/javascript">
-      $(function () {
-          var table = $('.data-table').DataTable({
-              processing: true,
-              serverSide: true,
-              ajax: "{{ route('expense.datatable') }}",
+      $(document).ready(function() {
+          $('#dataTable').DataTable({
+              "processing": true,
+              "serverSide": true,
+              "ajax": "{{ route('expense.datatable') }}",
               columns: [
                   {data: 'id', name: 'id'},
                   {data: 'date', name: 'date'},
                   {data: 'concept', name: 'concept'},
                   {data: 'amount', name: 'amount'},
-                  {data: 'action', name: 'action', orderable: false, searchable: false},
+                  {data: 'action', name: 'action'},
               ],
-              language: {
+              language : {
                   url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json'
+              },
+              "initComplete": function(settings, json) {
+                  $('.linkDelete').click(function () {
+                      let deleteLink = $(this).attr('data-href');
+                      $('#deleteForm').attr('action', deleteLink);
+                  });
               }
           });
       });
