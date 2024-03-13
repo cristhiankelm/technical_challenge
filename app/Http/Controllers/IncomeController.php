@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Income;
 use Illuminate\Http\Request;
+use Yajra\DataTables\Facades\DataTables;
 
 class IncomeController extends Controller
 {
@@ -11,14 +12,16 @@ class IncomeController extends Controller
     {
         if ($request->ajax()) {
             $data = Income::query()->get();
-            return Datatables::of($data)
+            return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function ($row) {
-                    $actionBtn = '<a href="javascript:void(0)" class="edit btn btn-success btn-sm">Edit</a> <a href="javascript:void(0)" class="delete btn btn-danger btn-sm">Delete</a>';
-                    return $actionBtn;
+                ->addColumn('action', function ($data) {
+                    return "<a class='m-2' href='" . route('income.edit', $data->id) . "'><i class='fas fa-pen fa-2x'></i></a>
+                    <a class='m-2 linkDelete' href='#' data-href='" . route('income.destroy', $data->id) . "' data-toggle='modal' data-target='#deleteModal'>
+                        <i class='fas fa-trash fa-2x'></i>
+                    </a>";
                 })
                 ->rawColumns(['action'])
-                ->make(true);
+                ->toJson();
         }
     }
     
@@ -54,6 +57,8 @@ class IncomeController extends Controller
     
     public function destroy(Income $income)
     {
-        //
+        $income->delete();
+        
+        return view('income.index');
     }
 }

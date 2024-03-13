@@ -39,7 +39,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/ingresos/store', 'store')->name('store');
             Route::get('/ingresos/edit/{income}', 'edit')->name('edit');
             Route::put('/ingresos/update/{income}', 'update')->name('update');
-            Route::delete('/ingresos/{income}', 'destroy')->name('delete');
+            Route::delete('/ingresos/delete/{income}', 'destroy')->name('destroy');
         });
     
     // Egresos monetátios
@@ -53,7 +53,7 @@ Route::middleware('auth')->group(function () {
             Route::post('/egresos/store', 'store')->name('store');
             Route::get('/egresos/edit/{expense}', 'edit')->name('edit');
             Route::put('/egresos/update/{expense}', 'update')->name('update');
-            Route::delete('/egresos/{expense}', 'destroy')->name('delete');
+            Route::delete('/egresos/delete/{expense}', 'destroy')->name('destroy');
         });
 
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
