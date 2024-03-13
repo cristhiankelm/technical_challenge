@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
         ->controller(IncomeController::class)
         ->name('income.')
         ->group(function () {
+            Route::get('/ingresos/datatable', 'datatable')->name('datatable');
             Route::get('/ingresos', 'index')->name('index');
             Route::get('/ingresos/create', 'create')->name('create');
             Route::post('/ingresos/store', 'store')->name('store');
@@ -46,6 +47,7 @@ Route::middleware('auth')->group(function () {
         ->controller(ExpenseController::class)
         ->name('expense.')
         ->group(function () {
+            Route::get('/egresos/datatable', 'datatable')->name('datatable');
             Route::get('/egresos', 'index')->name('index');
             Route::get('/egresos/create', 'create')->name('create');
             Route::post('/egresos/store', 'store')->name('store');
