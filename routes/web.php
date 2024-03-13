@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\IncomeController;
+use App\Models\Expense;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -25,8 +27,32 @@ Route::middleware('auth')->group(function () {
     Route::get('dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
-    // Rutas de la lógica
+    
+    // Ingresos monetátios
+    Route::middleware(['can:default'])
+        ->controller(IncomeController::class)
+        ->name('income.')
+        ->group(function () {
+            Route::get('/ingresos', 'index')->name('index');
+            Route::get('/ingresos/create', 'create')->name('create');
+            Route::post('/ingresos/store', 'store')->name('store');
+            Route::get('/ingresos/edit/{income}', 'edit')->name('edit');
+            Route::put('/ingresos/update/{income}', 'update')->name('update');
+            Route::delete('/ingresos/{income}', 'destroy')->name('delete');
+        });
+    
+    // Egresos monetátios
+    Route::middleware(['can:default'])
+        ->controller(Expense::class)
+        ->name('expense.')
+        ->group(function () {
+            Route::get('/egresos', 'index')->name('index');
+            Route::get('/egresos/create', 'create')->name('create');
+            Route::post('/egresos/store', 'store')->name('store');
+            Route::get('/egresos/edit/{expense}', 'edit')->name('edit');
+            Route::put('/egresos/update/{expense}', 'update')->name('update');
+            Route::delete('/egresos/{expense}', 'destroy')->name('delete');
+        });
 
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
 });
