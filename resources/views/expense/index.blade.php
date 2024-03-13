@@ -12,7 +12,7 @@
       <div class="col-lg-12">
         <div class="card mb-4 border-left-success">
           <div class="card-body">
-            <a class="btn btn-success" href="{{ route('expense.index') }}">Nuevo Egreso</a>
+            <a class="btn btn-success" href="{{ route('expense.create') }}">Nuevo Egreso</a>
           </div>
         </div>
       </div>
