@@ -51,14 +51,14 @@
         {
             return $this->belongsToMany(Permission::class);
         }
-        
+
         public function assignPermission(string $permission): void
         {
             $permission = $this->permissions()->firstOrCreate([
                 'name' => $permission
             ]);
         }
-        
+
         public function hasPermission(string $permission): bool
         {
             return $this->permissions()->where('name', $permission)->exists();
