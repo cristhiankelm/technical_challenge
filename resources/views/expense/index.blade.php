@@ -65,13 +65,11 @@
               ],
               language : {
                   url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json'
-              },
-              "initComplete": function(settings, json) {
-                  $('.linkDelete').click(function () {
-                      let deleteLink = $(this).attr('data-href');
-                      $('#deleteForm').attr('action', deleteLink);
-                  });
               }
+          });
+          $('#dataTable').on('click', '.linkDelete', function() {
+              let deleteLink = $(this).attr('data-href');
+              $('#deleteForm').attr('action', deleteLink);
           });
       });
   </script>

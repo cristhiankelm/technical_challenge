@@ -22,9 +22,9 @@ class StoreUpdateIncome extends FormRequest
     public function rules(): array
     {
         return [
-            'date' => 'required',
+            'date' => 'required|date',
             'concept' => 'required',
-            'amount' => 'required'
+            'amount' => 'required|numeric'
         ];
     }
 }
