@@ -12,7 +12,7 @@
       <div class="col-lg-12">
         <div class="card mb-4 border-left-success">
           <div class="card-body">
-            <a class="btn btn-success" href="{{ route('expense.index') }}">Nuevo Egreso</a>
+            <a class="btn btn-success" href="{{ route('expense.create') }}">Nuevo Egreso</a>
           </div>
         </div>
       </div>
@@ -65,13 +65,11 @@
               ],
               language : {
                   url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json'
-              },
-              "initComplete": function(settings, json) {
-                  $('.linkDelete').click(function () {
-                      let deleteLink = $(this).attr('data-href');
-                      $('#deleteForm').attr('action', deleteLink);
-                  });
               }
+          });
+          $('#dataTable').on('click', '.linkDelete', function() {
+              let deleteLink = $(this).attr('data-href');
+              $('#deleteForm').attr('action', deleteLink);
           });
       });
   </script>

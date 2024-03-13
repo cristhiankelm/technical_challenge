@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateIncome;
 use App\Models\Income;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -39,27 +40,30 @@ class IncomeController extends Controller
     
     public function create()
     {
-        //
+        return view('income.create');
     }
     
-    public function store(Request $request)
+    public function store(StoreUpdateIncome $request, Income $income)
     {
-        //
-    }
-    
-    public function show(Income $income)
-    {
-        //
+        $data = $request->validated();
+        
+        $income->create($data);
+        
+        return to_route('income.index');
     }
     
     public function edit(Income $income)
     {
-        //
+        return view('income.edit', compact('income'));
     }
     
-    public function update(Request $request, Income $income)
+    public function update(StoreUpdateIncome $request, Income $income)
     {
-        //
+        $data = $request->validated();
+        
+        $income->update($data);
+        
+        return to_route('income.index');
     }
     
     public function destroy(Income $income)

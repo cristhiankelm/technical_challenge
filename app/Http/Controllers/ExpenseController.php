@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdateExpense;
 use App\Models\Expense;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -15,7 +16,7 @@ class ExpenseController extends Controller
             $data = Expense::query()->get();
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->editColumn('date', function($data) {
+                ->editColumn('date', function ($data) {
                     return Carbon::parse($data->date)->format('d/m/Y');
                 })
                 ->editColumn('amount', function ($data) {
@@ -36,32 +37,35 @@ class ExpenseController extends Controller
     {
         return view('expense.index');
     }
-
+    
     public function create()
     {
-        //
+        return view('expense.create');
     }
-
-    public function store(Request $request)
+    
+    public function store(StoreUpdateExpense $request, Expense $expense)
     {
-        //
+        $data = $request->validated();
+        
+        $expense->create($data);
+        
+        return to_route('expense.index');
     }
-
-    public function show(Expense $expense)
-    {
-        //
-    }
-
+    
     public function edit(Expense $expense)
     {
-        //
+        return view('expense.edit', compact('expense'));
     }
-
-    public function update(Request $request, Expense $expense)
+    
+    public function update(StoreUpdateExpense $request, Expense $expense)
     {
-        //
+        $data = $request->validated();
+        
+        $expense->update($data);
+        
+        return to_route('expense.index');
     }
-
+    
     public function destroy(Expense $expense)
     {
         $expense->delete();
