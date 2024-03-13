@@ -1,7 +1,7 @@
 <?php
 
+use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
-use App\Models\Expense;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
     })->name('dashboard');
     
     // Ingresos monetátios
-    Route::middleware(['can:default'])
+    Route::middleware(['can:admin'])
         ->controller(IncomeController::class)
         ->name('income.')
         ->group(function () {
@@ -42,8 +42,8 @@ Route::middleware('auth')->group(function () {
         });
     
     // Egresos monetátios
-    Route::middleware(['can:default'])
-        ->controller(Expense::class)
+    Route::middleware(['can:admin'])
+        ->controller(ExpenseController::class)
         ->name('expense.')
         ->group(function () {
             Route::get('/egresos', 'index')->name('index');
