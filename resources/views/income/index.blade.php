@@ -1,10 +1,11 @@
 @extends('layouts.app')
 
 @section('contents')
+<div class="px-5">
   <!-- Page Heading -->
   <h1 class="h3 mb-1 text-gray-800">Ingresos</h1>
   <p class="mb-4">Visualice, edite y cree nuevos ingresos.</p>
-
+  
   <!-- Content Row -->
   <div class="row">
     <!-- Border Left Utilities -->
@@ -16,8 +17,8 @@
       </div>
     </div>
   </div>
-
-  <div class="row px-4">
+  
+  <div class="row">
     <div class="col-lg-12">
       <!-- DataTales Example -->
       <div class="card shadow mb-4">
@@ -28,16 +29,16 @@
           <div class="table-responsive">
             <table class="table table-bordered data-table" width="100%" cellspacing="0">
               <thead>
-              <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>Concepto</th>
-                <th>Monto</th>
-                <th width="105px">Acción</th>
-              </tr>
+                <tr>
+                  <th>ID</th>
+                  <th>Nombre</th>
+                  <th>Concepto</th>
+                  <th>Monto</th>
+                  <th width="105px">Acción</th>
+                </tr>
               </thead>
               <tbody>
-
+                
               </tbody>
             </table>
           </div>
@@ -45,26 +46,27 @@
       </div>
     </div>
   </div>
+</div>
 @endsection
 
 @section('scripts')
-  <script type="text/javascript">
-      $(function () {
-          var table = $('.data-table').DataTable({
-              processing: true,
-              serverSide: true,
-              ajax: "{{ route('income.datatable') }}",
-              columns: [
-                  {data: 'id', name: 'id'},
-                  {data: 'date', name: 'date'},
-                  {data: 'concept', name: 'concept'},
-                  {data: 'amount', name: 'amount'},
-                  {data: 'action', name: 'action', orderable: false, searchable: false},
-              ],
-              language: {
-                  url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json'
-              }
-          });
-      });
-  </script>
+<script type="text/javascript">
+  $(function () {
+    var table = $('.data-table').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: "{{ route('income.datatable') }}",
+      columns: [
+      {data: 'id', name: 'id'},
+      {data: 'date', name: 'date'},
+      {data: 'concept', name: 'concept'},
+      {data: 'amount', name: 'amount'},
+      {data: 'action', name: 'action', orderable: false, searchable: false},
+      ],
+      language: {
+        url: '//cdn.datatables.net/plug-ins/1.10.21/i18n/Spanish.json'
+      }
+    });
+  });
+</script>
 @endsection

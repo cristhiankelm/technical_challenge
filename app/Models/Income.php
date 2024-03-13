@@ -14,4 +14,11 @@ class Income extends Model
         'concept',
         'amount'
     ];
+    
+    public function getAmountFormattedAttribute()
+    {
+        $formattedAmount = number_format($this->amount, 0, ',', '.');
+        
+        return 'G$ ' . $formattedAmount;
+    }
 }

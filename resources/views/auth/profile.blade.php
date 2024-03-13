@@ -3,54 +3,57 @@
 {{--@section('title', 'Perfil del Usuário')--}}
 
 @section('contents')
-  <h1 class="mb-0">Perfil del Usuário</h1>
-  <hr />
-  
-  <form method="POST" enctype="multipart/form-data" id="profile_setup_frm" action="">
-    <div class="row">
-      <div class="col-md-12 border-right">
-        <div class="p-3 py-5">
-          <div class="d-flex justify-content-between align-items-center mb-3">
-            <h4 class="text-right">Configuración del Perfil</h4>
-          </div>
-          <div class="row" id="res"></div>
-          <div class="row mt-2">
-            <div class="col-md-6">
-              <label class="labels">Nombre</label>
-              <input type="text" name="first_name" class="form-control" placeholder="Nombre"
-                     value="{{ auth()->user()->first_name }}">
+  <div class="px-5">
+    <h1 class="mb-0">Perfil del Usuário</h1>
+    <hr/>
+
+    <form method="POST" enctype="multipart/form-data" id="profile_setup_frm" action="">
+      <div class="row">
+        <div class="col-md-12 border-right">
+          <div class="py-5">
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="text-right">Configuración del Perfil</h4>
             </div>
-            <div class="col-md-6">
-              <label class="labels">Apellido</label>
-              <input type="text" name="last_name" class="form-control" placeholder="Apellido"
-                     value="{{ auth()->user()->last_name }}">
+            <div class="row" id="res"></div>
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <label class="labels">Nombre</label>
+                <input type="text" name="first_name" class="form-control" placeholder="Nombre"
+                       value="{{ auth()->user()->first_name }}">
+              </div>
+              <div class="col-md-6">
+                <label class="labels">Apellido</label>
+                <input type="text" name="last_name" class="form-control" placeholder="Apellido"
+                       value="{{ auth()->user()->last_name }}">
+              </div>
             </div>
-          </div>
-          <div class="row mt-2">
-            <div class="col-md-6">
-              <label class="labels">Número de Teléfono</label>
-              <input type="text" name="phone_number" class="form-control" placeholder="Número de Teléfono"
-                     value="{{ auth()->user()->phone_number }}">
+            <div class="row mt-2">
+              <div class="col-md-6">
+                <label class="labels">Número de Teléfono</label>
+                <input type="text" name="phone_number" class="form-control" placeholder="Número de Teléfono"
+                       value="{{ auth()->user()->phone_number }}">
+              </div>
+              <div class="col-md-6">
+                <label class="labels">Email</label>
+                <input type="text" name="email" disabled class="form-control" value="{{ auth()->user()->email }}"
+                       placeholder="Email">
+              </div>
             </div>
-            <div class="col-md-6">
-              <label class="labels">Email</label>
-              <input type="text" name="email" disabled class="form-control" value="{{ auth()->user()->email }}"
-                     placeholder="Email">
+            <div class="row mt-2">
+              <div class="col-md-12">
+                <label class="labels">Dirección</label>
+                <input type="text" name="address" class="form-control" value="{{ auth()->user()->address }}"
+                       placeholder="Address">
+              </div>
             </div>
-          </div>
-          <div class="row mt-2">
-            <div class="col-md-12">
-              <label class="labels">Dirección</label>
-              <input type="text" name="address" class="form-control" value="{{ auth()->user()->address }}"
-                     placeholder="Address">
+
+            <div class="mt-5 text-center">
+              <button id="btn" class="btn btn-primary profile-button" type="submit" disabled>Guardar Alteraciones
+              </button>
             </div>
-          </div>
-          
-          <div class="mt-5 text-center">
-            <button id="btn" class="btn btn-primary profile-button" type="submit" disabled>Guardar Alteraciones</button>
           </div>
         </div>
       </div>
-    </div>
-  </form>
+    </form>
+  </div>
 @endsection
