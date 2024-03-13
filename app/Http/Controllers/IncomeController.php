@@ -57,8 +57,6 @@ class IncomeController extends Controller
     
     public function destroy(Income $income)
     {
-        $income->delete();
-        
-        return view('income.index');
+        //
     }
 }
