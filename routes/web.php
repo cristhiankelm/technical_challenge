@@ -3,6 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
+// Vamos logar com o usuário de id 1 e dar permissão de admin
+    auth()->loginUsingId(1);
+    $user = \App\Models\User::find(1)->assignPermission('admin');
+
 Route::get('/', function () {
     return view('welcome');
 });
