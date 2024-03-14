@@ -2,23 +2,67 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUpdatePermission;
+use App\Models\Permission;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Gate;
+use Yajra\DataTables\Facades\DataTables;
 
 class PermissionController extends Controller
 {
-    /**
-     * Handle the incoming request.
-     */
-    public function __invoke(Request $request)
+    public function datatable(Request $request)
     {
-        // Criando um usuário e dando permissão de admin
-        $user = \App\Models\User::factory()->create();
-        auth()->login($user);
-        $user->assignPermission('admin');
+        if ($request->ajax()) {
+            $data = Permission::query()->get();
+            return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function ($data) {
+                    return "<a class='m-2' href='" . route('permissions.edit', $data->id) . "'><i class='fas fa-pen fa-2x'></i></a>
+                    <a class='m-2 linkDelete' href='#' data-href='" . route('permissions.destroy', $data->id) . "' data-toggle='modal' data-target='#deleteModal'>
+                        <i class='fas fa-trash fa-2x'></i>
+                    </a>";
+                })
+                ->rawColumns(['action'])
+                ->toJson();
+        }
+    }
+    
+    public function index()
+    {
+        return view('permissions.index');
+    }
+    
+    public function create()
+    {
+        return view('permissions.create');
+    }
+    
+    public function store(StoreUpdatePermission $request, Permission $permission)
+    {
+        $data = $request->validated();
         
-        Gate::authorize('admin');
+        $permission->create($data);
         
-        return 'Você é um admin';
+        return to_route('permissions.index');
+    }
+    
+    public function edit(Permission $permission)
+    {
+        return view('permissions.edit', compact('permission'));
+    }
+    
+    public function update(StoreUpdatePermission $request, Permission $permission)
+    {
+        $data = $request->validated();
+        
+        $permission->update($data);
+        
+        return to_route('permissions.index');
+    }
+    
+    public function destroy(Permission $permission)
+    {
+        $permission->delete();
+        
+        return to_route('permissions.index');
     }
 }

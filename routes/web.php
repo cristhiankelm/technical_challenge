@@ -3,6 +3,7 @@
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
@@ -35,11 +36,11 @@ Route::middleware('auth')->group(function () {
         ->group(function () {
             Route::get('/ingresos/datatable', 'datatable')->name('datatable');
             Route::get('/ingresos', 'index')->name('index');
-            Route::get('/ingresos/create', 'create')->name('create');
-            Route::post('/ingresos/store', 'store')->name('store');
-            Route::get('/ingresos/edit/{incomes}', 'edit')->name('edit');
-            Route::put('/ingresos/update/{incomes}', 'update')->name('update');
-            Route::delete('/ingresos/delete/{incomes}', 'destroy')->name('destroy');
+            Route::get('/ingreso/create', 'create')->name('create');
+            Route::post('/ingreso/store', 'store')->name('store');
+            Route::get('/ingreso/edit/{incomes}', 'edit')->name('edit');
+            Route::put('/ingreso/update/{incomes}', 'update')->name('update');
+            Route::delete('/ingreso/delete/{incomes}', 'destroy')->name('destroy');
         });
     
     // Egresos monetátios
@@ -48,20 +49,33 @@ Route::middleware('auth')->group(function () {
         ->group(function () {
             Route::get('/egresos/datatable', 'datatable')->name('datatable');
             Route::get('/egresos', 'index')->name('index');
-            Route::get('/egresos/create', 'create')->name('create');
-            Route::post('/egresos/store', 'store')->name('store');
-            Route::get('/egresos/edit/{expenses}', 'edit')->name('edit');
-            Route::put('/egresos/update/{expenses}', 'update')->name('update');
-            Route::delete('/egresos/delete/{expenses}', 'destroy')->name('destroy');
+            Route::get('/egreso/create', 'create')->name('create');
+            Route::post('/egreso/store', 'store')->name('store');
+            Route::get('/egreso/edit/{expenses}', 'edit')->name('edit');
+            Route::put('/egreso/update/{expenses}', 'update')->name('update');
+            Route::delete('/egreso/delete/{expenses}', 'destroy')->name('destroy');
         });
     
     Route::middleware('can:admin')->group(function () {
-        // Egresos monetátios
+        // Usuários
         Route::controller(UserController::class)
             ->name('users.')
             ->group(function () {
                 Route::get('/usuarios/datatable', 'datatable')->name('datatable');
                 Route::get('/usuarios', 'index')->name('index');
+            });
+        
+        // Permisos
+        Route::controller(PermissionController::class)
+            ->name('permissions.')
+            ->group(function () {
+                Route::get('/permisos/datatable', 'datatable')->name('datatable');
+                Route::get('/permisos', 'index')->name('index');
+                Route::get('/permiso/create', 'create')->name('create');
+                Route::post('/permiso/store', 'store')->name('store');
+                Route::get('/permiso/edit/{permission}', 'edit')->name('edit');
+                Route::put('/permiso/update/{permission}', 'update')->name('update');
+                Route::delete('/permiso/delete/{permission}', 'destroy')->name('destroy');
             });
     });
     

@@ -14,11 +14,15 @@ class UserController extends Controller
             $data = User::query()->where('id', '!=', auth()->id())->get();
             return DataTables::of($data)
                 ->addIndexColumn()
-                ->addColumn('action', function ($data) {
-                    return "<a class='m-2' href='" . route('incomes.edit', $data->id) . "'><i class='fas fa-pen fa-2x'></i></a>
-                    <a class='m-2 linkDelete' href='#' data-href='" . route('incomes.destroy', $data->id) . "' data-toggle='modal' data-target='#deleteModal'>
-                        <i class='fas fa-trash fa-2x'></i>
-                    </a>";
+//                ->addColumn('action', function ($data) {
+//                    return "<a class='m-2' href='" . route('incomes.edit', $data->id) . "'><i class='fas fa-pen fa-2x'></i></a>
+//                    <a class='m-2 linkDelete' href='#' data-href='" . route('incomes.destroy', $data->id) . "' data-toggle='modal' data-target='#deleteModal'>
+//                        <i class='fas fa-trash fa-2x'></i>
+//                    </a>";
+//                })
+                ->addColumn('action', function () {
+                    return "<a class='mx-2'><i class='fas fa-pen fa-2x'></i></a>
+                            <a class='mx-2'><i class='fas fa-trash fa-2x'></i></a>";
                 })
                 ->rawColumns(['action'])
                 ->toJson();

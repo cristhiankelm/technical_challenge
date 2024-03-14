@@ -64,8 +64,8 @@
         <span>Usuários</span></a>
     </li>
 
-    <li class="nav-item {{ request()->routeIs('expenses-*') || request()->routeIs('expenses.*') ? "active" : "" }}">
-      <a class="nav-link" href="{{ route('expenses.index') }}">
+    <li class="nav-item {{ request()->routeIs('permissions-*') || request()->routeIs('permissions.*') ? "active" : "" }}">
+      <a class="nav-link" href="{{ route('permissions.index') }}">
         <i class="fas fa-fw fa-key"></i>
         <span>Permisos</span></a>
     </li>
