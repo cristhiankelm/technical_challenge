@@ -8,6 +8,9 @@ use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
+    /**
+     * Calcula y muestra en el panel de control los totales de ingresos y gastos del mes actual y del año en curso.
+     */
     public function index()
     {
         $startOfMonth = Carbon::now()->startOfMonth();

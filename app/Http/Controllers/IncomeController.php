@@ -10,6 +10,10 @@ use Yajra\DataTables\Facades\DataTables;
 
 class IncomeController extends Controller
 {
+    /**
+     * Proporciona los datos de los ingresos en formato JSON para ser utilizados en una tabla de datos (DataTable)
+     * en el front-end. Incluye la posibilidad de formatear las columnas y agregar acciones de edición y eliminación.
+     */
     public function datatable(Request $request)
     {
         if ($request->ajax()) {
@@ -33,16 +37,25 @@ class IncomeController extends Controller
         }
     }
     
+    /**
+     * Muestra la vista principal de la lista de ingresos.
+     */
     public function index()
     {
         return view('incomes.index');
     }
     
+    /**
+     * Muestra la vista para crear un nuevo ingreso.
+     */
     public function create()
     {
         return view('incomes.create');
     }
     
+    /**
+     * Valida y guarda un nuevo ingreso en la base de datos. Redirige a la lista de ingresos tras una creación exitosa.
+     */
     public function store(StoreUpdateIncome $request, Income $income)
     {
         $data = $request->validated();
@@ -52,11 +65,17 @@ class IncomeController extends Controller
         return to_route('incomes.index');
     }
     
+    /**
+     * Muestra la vista para editar un ingreso existente.
+     */
     public function edit(Income $income)
     {
         return view('incomes.edit', compact('income'));
     }
     
+    /**
+     * Valida y actualiza un ingreso existente en la base de datos. Redirige a la lista de ingresos tras una actualización exitosa.
+     */
     public function update(StoreUpdateIncome $request, Income $income)
     {
         $data = $request->validated();
@@ -66,6 +85,9 @@ class IncomeController extends Controller
         return to_route('incomes.index');
     }
     
+    /**
+     * Elimina un ingreso existente de la base de datos. Redirige a la lista de ingresos tras una eliminación exitosa.
+     */
     public function destroy(Income $income)
     {
         $income->delete();
