@@ -8,6 +8,11 @@ use Yajra\DataTables\Facades\DataTables;
 
 class UserController extends Controller
 {
+    /**
+     * Proporciona los datos de los usuarios en formato JSON para ser utilizados en una tabla de datos (DataTable)
+     * en el front-end, excluyendo al usuario autenticado actual. Incluye una columna de acciones con iconos para
+     * editar y eliminar, aunque las rutas de estas acciones no están definidas en este fragmento de código.
+     */
     public function datatable(Request $request)
     {
         if ($request->ajax()) {
@@ -29,6 +34,9 @@ class UserController extends Controller
         }
     }
     
+    /**
+     * Muestra la vista principal de la lista de usuarios.
+     */
     public function index()
     {
         return view('users.index');

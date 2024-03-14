@@ -11,11 +11,17 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
+    /**
+     * Muestra la vista de registro de usuario.
+     */
     public function register()
     {
         return view('auth/register');
     }
-
+    
+    /**
+     * Valida y guarda un nuevo usuario en la base de datos. Redirige a la página de inicio de sesión tras el registro exitoso.
+     */
     public function registerSave(Request $request)
     {
         Validator::make($request->all(), [
@@ -38,12 +44,18 @@ class AuthController extends Controller
 
         return redirect()->route('login');
     }
-
+    
+    /**
+     * Muestra la vista de inicio de sesión.
+     */
     public function login()
     {
         return view('auth/login');
     }
-
+    
+    /**
+     * Valida las credenciales de inicio de sesión y autentica al usuario. Redirige al panel de control tras un inicio de sesión exitoso.
+     */
     public function loginAction(Request $request)
     {
         Validator::make($request->all(), [
@@ -61,7 +73,10 @@ class AuthController extends Controller
 
         return redirect()->route('dashboard');
     }
-
+    
+    /**
+     * Cierra la sesión del usuario y redirige a la página de inicio.
+     */
     public function logout(Request $request)
     {
         Auth::guard('web')->logout();
@@ -70,7 +85,10 @@ class AuthController extends Controller
 
         return redirect('/');
     }
-
+    
+    /**
+     * Muestra la vista del perfil de usuario.
+     */
     public function profile()
     {
         return view('auth/profile');

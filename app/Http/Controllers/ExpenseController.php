@@ -10,6 +10,10 @@ use Yajra\DataTables\Facades\DataTables;
 
 class ExpenseController extends Controller
 {
+    /**
+     * Proporciona los datos de los gastos en formato JSON para ser utilizados en una tabla de datos (DataTable)
+     * en el front-end. Incluye la posibilidad de formatear las columnas y agregar acciones de edición y eliminación.
+     */
     public function datatable(Request $request)
     {
         if ($request->ajax()) {
@@ -33,16 +37,25 @@ class ExpenseController extends Controller
         }
     }
     
+    /**
+     * Muestra la vista principal de la lista de gastos.
+     */
     public function index()
     {
         return view('expenses.index');
     }
     
+    /**
+     * Muestra la vista para crear un nuevo gasto.
+     */
     public function create()
     {
         return view('expenses.create');
     }
     
+    /**
+     * Valida y guarda un nuevo gasto en la base de datos. Redirige a la lista de gastos tras una creación exitosa.
+     */
     public function store(StoreUpdateExpense $request, Expense $expense)
     {
         $data = $request->validated();
@@ -52,11 +65,17 @@ class ExpenseController extends Controller
         return to_route('expenses.index');
     }
     
+    /**
+     * Muestra la vista para editar un gasto existente.
+     */
     public function edit(Expense $expense)
     {
         return view('expenses.edit', compact('expense'));
     }
     
+    /**
+     * Valida y actualiza un gasto existente en la base de datos. Redirige a la lista de gastos tras una actualización exitosa.
+     */
     public function update(StoreUpdateExpense $request, Expense $expense)
     {
         $data = $request->validated();
@@ -66,6 +85,9 @@ class ExpenseController extends Controller
         return to_route('expenses.index');
     }
     
+    /**
+     * Elimina un gasto existente de la base de datos. Redirige a la lista de gastos tras una eliminación exitosa.
+     */
     public function destroy(Expense $expense)
     {
         $expense->delete();

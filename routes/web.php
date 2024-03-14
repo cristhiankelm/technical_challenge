@@ -39,9 +39,9 @@ Route::middleware('auth')->group(function () {
             Route::get('/ingresos', 'index')->name('index');
             Route::get('/ingreso/create', 'create')->name('create');
             Route::post('/ingreso/store', 'store')->name('store');
-            Route::get('/ingreso/edit/{incomes}', 'edit')->name('edit');
-            Route::put('/ingreso/update/{incomes}', 'update')->name('update');
-            Route::delete('/ingreso/delete/{incomes}', 'destroy')->name('destroy');
+            Route::get('/ingreso/edit/{income}', 'edit')->name('edit');
+            Route::put('/ingreso/update/{income}', 'update')->name('update');
+            Route::delete('/ingreso/delete/{income}', 'destroy')->name('destroy');
         });
     
     // Egresos monetátios
@@ -52,11 +52,12 @@ Route::middleware('auth')->group(function () {
             Route::get('/egresos', 'index')->name('index');
             Route::get('/egreso/create', 'create')->name('create');
             Route::post('/egreso/store', 'store')->name('store');
-            Route::get('/egreso/edit/{expenses}', 'edit')->name('edit');
-            Route::put('/egreso/update/{expenses}', 'update')->name('update');
-            Route::delete('/egreso/delete/{expenses}', 'destroy')->name('destroy');
+            Route::get('/egreso/edit/{expense}', 'edit')->name('edit');
+            Route::put('/egreso/update/{expense}', 'update')->name('update');
+            Route::delete('/egreso/delete/{expense}', 'destroy')->name('destroy');
         });
     
+    // Rutas atribuidas a usuarios con nivel de permision Administrador
     Route::middleware('can:admin')->group(function () {
         // Usuários
         Route::controller(UserController::class)

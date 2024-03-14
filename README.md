@@ -47,17 +47,17 @@ La lógica principal de la aplicación consistirá en la gestión de usuarios y 
 
     cd technical_challenge
 
-2. Instalar las dependencias de Composer
-
-    composer install
-
-3. Configurar el entorno
+2. Configurar el entorno
 
     Copia el archivo .env.example a .env:
 
     cp .env.example .env
 
     Edita el archivo .env y configura las variables de entorno, especialmente las relacionadas con la conexión a la base de datos (DB_*).
+
+3. Instalar las dependencias de Composer
+
+    composer install
 
 4. Generar la clave de la aplicación
 
