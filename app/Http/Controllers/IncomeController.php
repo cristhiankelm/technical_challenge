@@ -23,8 +23,8 @@ class IncomeController extends Controller
                     return $data->amount_formatted;
                 })
                 ->addColumn('action', function ($data) {
-                    return "<a class='m-2' href='" . route('income.edit', $data->id) . "'><i class='fas fa-pen fa-2x'></i></a>
-                    <a class='m-2 linkDelete' href='#' data-href='" . route('income.destroy', $data->id) . "' data-toggle='modal' data-target='#deleteModal'>
+                    return "<a class='m-2' href='" . route('incomes.edit', $data->id) . "'><i class='fas fa-pen fa-2x'></i></a>
+                    <a class='m-2 linkDelete' href='#' data-href='" . route('incomes.destroy', $data->id) . "' data-toggle='modal' data-target='#deleteModal'>
                         <i class='fas fa-trash fa-2x'></i>
                     </a>";
                 })
@@ -35,12 +35,12 @@ class IncomeController extends Controller
     
     public function index()
     {
-        return view('income.index');
+        return view('incomes.index');
     }
     
     public function create()
     {
-        return view('income.create');
+        return view('incomes.create');
     }
     
     public function store(StoreUpdateIncome $request, Income $income)
@@ -49,12 +49,12 @@ class IncomeController extends Controller
         
         $income->create($data);
         
-        return to_route('income.index');
+        return to_route('incomes.index');
     }
     
     public function edit(Income $income)
     {
-        return view('income.edit', compact('income'));
+        return view('incomes.edit', compact('income'));
     }
     
     public function update(StoreUpdateIncome $request, Income $income)
@@ -63,13 +63,13 @@ class IncomeController extends Controller
         
         $income->update($data);
         
-        return to_route('income.index');
+        return to_route('incomes.index');
     }
     
     public function destroy(Income $income)
     {
         $income->delete();
         
-        return to_route('income.index');
+        return to_route('incomes.index');
     }
 }

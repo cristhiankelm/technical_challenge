@@ -23,8 +23,8 @@ class ExpenseController extends Controller
                     return $data->amount_formatted;
                 })
                 ->addColumn('action', function ($data) {
-                    return "<a class='m-2' href='" . route('expense.edit', $data->id) . "'><i class='fas fa-pen fa-2x'></i></a>
-                    <a class='m-2 linkDelete' href='#' data-href='" . route('expense.destroy', $data->id) . "' data-toggle='modal' data-target='#deleteModal'>
+                    return "<a class='m-2' href='" . route('expenses.edit', $data->id) . "'><i class='fas fa-pen fa-2x'></i></a>
+                    <a class='m-2 linkDelete' href='#' data-href='" . route('expenses.destroy', $data->id) . "' data-toggle='modal' data-target='#deleteModal'>
                         <i class='fas fa-trash fa-2x'></i>
                     </a>";
                 })
@@ -35,12 +35,12 @@ class ExpenseController extends Controller
     
     public function index()
     {
-        return view('expense.index');
+        return view('expenses.index');
     }
     
     public function create()
     {
-        return view('expense.create');
+        return view('expenses.create');
     }
     
     public function store(StoreUpdateExpense $request, Expense $expense)
@@ -49,12 +49,12 @@ class ExpenseController extends Controller
         
         $expense->create($data);
         
-        return to_route('expense.index');
+        return to_route('expenses.index');
     }
     
     public function edit(Expense $expense)
     {
-        return view('expense.edit', compact('expense'));
+        return view('expenses.edit', compact('expense'));
     }
     
     public function update(StoreUpdateExpense $request, Expense $expense)
@@ -63,13 +63,13 @@ class ExpenseController extends Controller
         
         $expense->update($data);
         
-        return to_route('expense.index');
+        return to_route('expenses.index');
     }
     
     public function destroy(Expense $expense)
     {
         $expense->delete();
         
-        return to_route('expense.index');
+        return to_route('expenses.index');
     }
 }
