@@ -70,8 +70,8 @@
         <span>Permisos</span></a>
     </li>
 
-    <li class="nav-item {{ request()->routeIs('expenses-*') || request()->routeIs('expenses.*') ? "active" : "" }}">
-      <a class="nav-link" href="{{ route('expenses.index') }}">
+    <li class="nav-item {{ request()->routeIs('assign-*') || request()->routeIs('assign-permissions.*') ? "active" : "" }}">
+      <a class="nav-link" href="{{ route('assign-permissions.create') }}">
         <i class="fas fa-fw fa-wrench"></i>
         <span>Asignar Permisos</span></a>
     </li>

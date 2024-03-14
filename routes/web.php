@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AssignPermissionController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\IncomeController;
@@ -77,6 +78,16 @@ Route::middleware('auth')->group(function () {
                 Route::put('/permiso/update/{permission}', 'update')->name('update');
                 Route::delete('/permiso/delete/{permission}', 'destroy')->name('destroy');
             });
+        
+        // Usuários
+        Route::controller(AssignPermissionController::class)
+            ->name('assign-permissions.')
+            ->group(function () {
+                Route::get('/user/{user}/permissions', 'index')->name('index');
+                Route::get('/asignar-permisos', 'create')->name('create');
+                Route::put('/asignar-permisos/{user}', 'update')->name('update');
+            });
+        
     });
     
     Route::get('/profile', [AuthController::class, 'profile'])->name('profile');
