@@ -6,6 +6,9 @@ if (!function_exists('format_currency')) {
      *
      * @param  float  $amount
      * @return string
+     *
+     * Helper nivel global de la aplicación para formatear valor monetário en Formato Guaranies PY
+     * Accionado dentro de composer.json
      */
     function format_currency($amount)
     {
