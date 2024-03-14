@@ -35,7 +35,7 @@ class AssignPermissionController extends Controller
     public function update(Request $request)
     {
         $user = User::query()->findOrFail($request->user);
-        $user->permissions()->sync($request->permissions);
+        $user->permissions()->sync($request->input('permissions', []));
         
         return back()->with('success', 'Permisiones actualizadas com éxito!');
     }
