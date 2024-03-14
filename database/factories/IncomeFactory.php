@@ -17,9 +17,9 @@ class IncomeFactory extends Factory
     public function definition(): array
     {
         return [
-            'date' => $this->faker->date(),
-            'concept' => $this->faker->word(),
-            'amount' => $this->faker->numberBetween(15000, 100000000),
+            'date' => $this->faker->dateTimeBetween('01-01-2024', now())->format('Y-m-d'),
+            'concept' => $this->faker->realText(65),
+            'amount' => $this->faker->numberBetween(15000, 5000000),
         ];
     }
 }
