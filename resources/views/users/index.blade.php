@@ -3,27 +3,15 @@
 @section('contents')
   <div class="px-5">
     <!-- Page Heading -->
-    <h1 class="h3 mb-1 text-gray-800">Egresos</h1>
-    <p class="mb-4">Visualice, edite y cree nuevos egresos.</p>
-
-    <!-- Content Row -->
-    <div class="row">
-      <!-- Border Left Utilities -->
-      <div class="col-lg-12">
-        <div class="card mb-4 border-left-success">
-          <div class="card-body">
-            <a class="btn btn-success" href="{{ route('expense.create') }}">Nuevo Egreso</a>
-          </div>
-        </div>
-      </div>
-    </div>
+    <h1 class="h3 mb-1 text-gray-800">Usuários</h1>
+    <p class="mb-4">Visualice, edite y cree nuevos usuários.</p>
 
     <div class="row">
       <div class="col-lg-12">
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
           <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Egresos</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Usuários</h6>
           </div>
           <div class="card-body">
             <div class="table-responsive">
@@ -31,9 +19,11 @@
                 <thead>
                 <tr>
                   <th width="5%">ID</th>
-                  <th width="10%">Fecha</th>
-                  <th>Concepto</th>
-                  <th width="20%">Monto</th>
+                  <th width="10%">Nombre</th>
+                  <th width="10%">Apellido</th>
+                  <th width="15%">Email</th>
+                  <th width="15%">Numero de Teléfono</th>
+                  <th>Dirección</th>
                   <th width="105px">Acciones</th>
                 </tr>
                 </thead>
@@ -55,12 +45,14 @@
           $('#dataTable').DataTable({
               "processing": true,
               "serverSide": true,
-              "ajax": "{{ route('expense.datatable') }}",
+              "ajax": "{{ route('users.datatable') }}",
               columns: [
                   {data: 'id', name: 'id'},
-                  {data: 'date', name: 'date'},
-                  {data: 'concept', name: 'concept'},
-                  {data: 'amount', name: 'amount'},
+                  {data: 'first_name', name: 'first_name'},
+                  {data: 'last_name', name: 'last_name'},
+                  {data: 'email', name: 'email'},
+                  {data: 'phone_number', name: 'phone_number'},
+                  {data: 'address', name: 'address'},
                   {data: 'action', name: 'action'},
               ],
               language : {

@@ -25,14 +25,14 @@
     Gerenciamento
   </div>
 
-  <li class="nav-item {{ request()->routeIs('income-*') || request()->routeIs('income.*') ? "active" : "" }}">
-    <a class="nav-link" href="{{ route('income.index') }}">
+  <li class="nav-item {{ request()->routeIs('incomes-*') || request()->routeIs('incomes.*') ? "active" : "" }}">
+    <a class="nav-link" href="{{ route('incomes.index') }}">
       <i class="fas fa-fw fa-money-bill-wave"></i>
       <span>Ingresos</span></a>
   </li>
 
-  <li class="nav-item {{ request()->routeIs('expense-*') || request()->routeIs('expense.*') ? "active" : "" }}">
-    <a class="nav-link" href="{{ route('expense.index') }}">
+  <li class="nav-item {{ request()->routeIs('expenses-*') || request()->routeIs('expenses.*') ? "active" : "" }}">
+    <a class="nav-link" href="{{ route('expenses.index') }}">
       <i class="fas fa-fw fa-money-bill"></i>
       <span>Egresos</span></a>
   </li>
@@ -40,14 +40,45 @@
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block mt-4">
 
+  <div class="sidebar-heading">
+    Usuário
+  </div>
+
   <li class="nav-item {{ request()->routeIs('profile') ? "active" : "" }}">
     <a class="nav-link" href="{{ route('profile') }}">
-      <i class="fas fa-fw fa-user"></i>
+      <i class="fas fa-fw fa-user-lock"></i>
       <span>Perfil</span></a>
   </li>
 
   <!-- Divider -->
   <hr class="sidebar-divider d-none d-md-block mt-4">
+
+  @can('admin')
+    <div class="sidebar-heading">
+      Configuraciones
+    </div>
+
+    <li class="nav-item {{ request()->routeIs('users-*') || request()->routeIs('users.*') ? "active" : "" }}">
+      <a class="nav-link" href="{{ route('users.index') }}">
+        <i class="fas fa-fw fa-users"></i>
+        <span>Usuários</span></a>
+    </li>
+
+    <li class="nav-item {{ request()->routeIs('permissions-*') || request()->routeIs('permissions.*') ? "active" : "" }}">
+      <a class="nav-link" href="{{ route('permissions.index') }}">
+        <i class="fas fa-fw fa-key"></i>
+        <span>Permisos</span></a>
+    </li>
+
+    <li class="nav-item {{ request()->routeIs('assign-*') || request()->routeIs('assign-permissions.*') ? "active" : "" }}">
+      <a class="nav-link" href="{{ route('assign-permissions.create') }}">
+        <i class="fas fa-fw fa-wrench"></i>
+        <span>Asignar Permisos</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider d-none d-md-block mt-4">
+  @endcan
 
   <!-- Sidebar Toggler (Sidebar) -->
   <div class="text-center d-none d-md-inline">

@@ -31,7 +31,7 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                    Ingresos (Mensual)
+                    Ingresos (Mensual) {último mes}
                   </div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">{{ format_currency($incomeLastMonth) }}</div>
                 </div>
@@ -69,7 +69,7 @@
               <div class="row no-gutters align-items-center">
                 <div class="col mr-2">
                   <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                    Egresos (Mensual)
+                    Egresos (Mensual) {último mes}
                   </div>
                   <div class="h5 mb-0 font-weight-bold text-gray-800">{{ format_currency($expenseLastMonth) }}</div>
                 </div>

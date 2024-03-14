@@ -12,7 +12,7 @@
       <div class="col-lg-12">
         <div class="card mb-4 border-left-success">
           <div class="card-body">
-            <a class="btn btn-success" href="{{ route('income.create') }}">Nuevo Ingreso</a>
+            <a class="btn btn-success" href="{{ route('incomes.create') }}">Nuevo Ingreso</a>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
           $('#dataTable').DataTable({
               "processing": true,
               "serverSide": true,
-              "ajax": "{{ route('income.datatable') }}",
+              "ajax": "{{ route('incomes.datatable') }}",
               columns: [
                   {data: 'id', name: 'id'},
                   {data: 'date', name: 'date'},

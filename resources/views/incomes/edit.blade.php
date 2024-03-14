@@ -12,7 +12,7 @@
       <div class="col-lg-12">
         <div class="card mb-4 border-left-primary">
           <div class="card-body">
-            <a class="btn btn-secondary" href="{{ route('income.index') }}">Listar Ingresos</a>
+            <a class="btn btn-secondary" href="{{ route('incomes.index') }}">Listar Ingresos</a>
           </div>
         </div>
       </div>
@@ -26,7 +26,7 @@
           <div class="card-header py-3 mb-5">
             <h6 class="m-0 font-weight-bold text-primary">Formulario para registrar ingresos</h6>
           </div>
-          <form method="POST" enctype="multipart/form-data" action="{{ route('income.update', $income->id) }}"
+          <form method="POST" enctype="multipart/form-data" action="{{ route('incomes.update', $income->id) }}"
                 enctype="multipart/form-data">
             @csrf
             @method('put')
